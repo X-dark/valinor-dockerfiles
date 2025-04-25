@@ -1,4 +1,4 @@
-FROM docker.io/python:3.12-alpine as builder
+FROM docker.io/python:3.12-alpine AS builder
 ENV PYTHONUNBUFFERED=1
 
 RUN --mount=type=cache,target=/var/cache/apk \
@@ -12,7 +12,10 @@ RUN --mount=type=cache,target=/var/cache/apk \
 
 COPY --from=ghcr.io/astral-sh/uv:0.6 /uv /uvx /bin/
 ENV UV_COMPILE_BYTECODE=1 UV_LINK_MODE=copy
+
+ADD https://github.com/Flexget/Flexget.git /flexget
 WORKDIR /flexget
+
 RUN --mount=type=cache,target=/root/.cache/uv \
   --mount=type=bind,source=scripts/bundle_webui.py,target=scripts/bundle_webui.py \
   uv run scripts/bundle_webui.py
@@ -20,7 +23,6 @@ RUN --mount=type=cache,target=/root/.cache/uv \
   --mount=type=bind,source=uv.lock,target=uv.lock \
   --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
   uv sync --frozen --no-dev --all-groups --all-extras --no-install-project
-ADD . /flexget
 RUN --mount=type=cache,target=/root/.cache/uv \
   uv sync --frozen --no-dev --all-groups --all-extras
 
