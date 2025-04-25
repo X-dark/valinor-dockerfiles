@@ -1,4 +1,4 @@
-FROM alpine:latest
+FROM docker.io/alpine:latest
 
 LABEL org.opencontainers.image.source=https://github.com/bokub/ha-linky
 LABEL org.opencontainers.image.description="HA Linky Standalone"
