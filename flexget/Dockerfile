@@ -17,11 +17,8 @@ ADD https://github.com/Flexget/Flexget.git#develop /flexget
 WORKDIR /flexget
 
 RUN --mount=type=cache,target=/root/.cache/uv \
-  --mount=type=bind,source=scripts/bundle_webui.py,target=scripts/bundle_webui.py \
   uv run scripts/bundle_webui.py
 RUN --mount=type=cache,target=/root/.cache/uv \
-  --mount=type=bind,source=uv.lock,target=uv.lock \
-  --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
   uv sync --frozen --no-dev --all-groups --all-extras --no-install-project
 RUN --mount=type=cache,target=/root/.cache/uv \
   uv sync --frozen --no-dev --all-groups --all-extras
