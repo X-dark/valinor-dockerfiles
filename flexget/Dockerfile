@@ -13,7 +13,7 @@ RUN --mount=type=cache,target=/var/cache/apk \
 COPY --from=ghcr.io/astral-sh/uv:0.6 /uv /uvx /bin/
 ENV UV_COMPILE_BYTECODE=1 UV_LINK_MODE=copy
 
-ADD https://github.com/Flexget/Flexget.git /flexget
+ADD https://github.com/Flexget/Flexget.git#develop /flexget
 WORKDIR /flexget
 
 RUN --mount=type=cache,target=/root/.cache/uv \
