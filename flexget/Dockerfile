@@ -1,4 +1,4 @@
-FROM docker.io/python:3.12-alpine
+FROM docker.io/python:3.12-alpine as builder
 ENV PYTHONUNBUFFERED=1
 
 RUN --mount=type=cache,target=/var/cache/apk \
