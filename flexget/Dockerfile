@@ -10,7 +10,7 @@ RUN --mount=type=cache,target=/var/cache/apk \
   openssl-dev \
   unzip
 
-COPY --from=ghcr.io/astral-sh/uv:0.6 /uv /uvx /bin/
+COPY --from=ghcr.io/astral-sh/uv:0.7 /uv /uvx /bin/
 ENV UV_COMPILE_BYTECODE=1 UV_LINK_MODE=copy
 
 ADD https://github.com/Flexget/Flexget.git#develop /flexget
