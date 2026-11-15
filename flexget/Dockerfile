@@ -1,4 +1,4 @@
-FROM docker.io/python:3.12-alpine AS builder
+FROM docker.io/python:3.15-alpine AS builder
 ENV PYTHONUNBUFFERED=1
 
 RUN --mount=type=cache,target=/var/cache/apk \
@@ -23,7 +23,7 @@ RUN --mount=type=cache,target=/root/.cache/uv \
 RUN --mount=type=cache,target=/root/.cache/uv \
   uv sync --frozen --no-dev --all-groups --all-extras
 
-FROM docker.io/python:3.12-alpine
+FROM docker.io/python:3.15-alpine
 ENV PYTHONUNBUFFERED=1
 
 RUN --mount=type=cache,target=/var/cache/apk \
