@@ -6,7 +6,19 @@
 version: 2
 updates:
   - package-ecosystem: "docker" # See documentation for possible values
-    directory: "/" # Location of package manifests
+    directory: "/flexget" # Location of package manifests
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "docker" # See documentation for possible values
+    directory: "/freshrss" # Location of package manifests
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "docker" # See documentation for possible values
+    directory: "/ha-linky" # Location of package manifests
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "docker" # See documentation for possible values
+    directory: "/telerama-rss" # Location of package manifests
     schedule:
       interval: "weekly"
   - package-ecosystem: "github-actions" # See documentation for possible values
